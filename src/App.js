@@ -26,7 +26,48 @@ class App extends Component {
 		
 			<div id="main">
 				<div className="header">
-				<h1>Home</h1>
+					<h1>Cadastro de Autores</h1>
+				</div>
+
+				<div className='content' id='content'>
+					{/* Formulário para cadastro */}
+					<div className='pure-form pure-form-aligned'>
+						<form className='pure-form pure-form-aligned'>
+							<div className='pure-control-group'>
+								<label htmlFor='nome'>Nome</label>
+								<input id='nome' type='text' name='nome' value=''></input>
+							</div>
+							<div className='pure-control-group'>
+								<label htmlFor='e-mail'>E-mail</label>
+								<input id='email' type='email' name='email' value=''></input>
+							</div>
+							<div className='pure-control-group'>
+								<label htmlFor='senha'>Senha</label>
+								<input id='senha' type='password' name='senha' value=''></input>
+							</div>
+							<div className='pure-control-group'>
+								<label></label>
+								<button type='submit' className='pure-button pure-button-primary'>Gravar</button>
+							</div>
+						</form>
+					</div>
+					{/* Tabela de cadastrados */}
+					<div>
+						<table className='pure-table-striped'>
+							<thead>
+								<tr>
+									<th>Nome</th>
+									<th>E-mail</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Felipe</td>
+									<td>felipe.hashi@gmail.com</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
