@@ -53,7 +53,7 @@ class App extends Component {
 					</div>
 					{/* Tabela de cadastrados */}
 					<div>
-						<table className='pure-table-striped'>
+						<table className='pure-table pure-table-striped'>
 							<thead>
 								<tr>
 									<th>Nome</th>
@@ -64,6 +64,10 @@ class App extends Component {
 								<tr>
 									<td>Felipe</td>
 									<td>felipe.hashi@gmail.com</td>
+								</tr>
+								<tr>
+									<td>Fernanda</td>
+									<td>fernandamk@gmail.com</td>
 								</tr>
 							</tbody>
 						</table>
