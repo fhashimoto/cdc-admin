@@ -3,7 +3,13 @@ import './css/pure-min.css';
 import './css/side-menu.css';
 
 class App extends Component {
-  render() {
+
+	constructor(){
+		super();
+		this.state = {lista:[{nome:'Felipe', email:'felipe.hashi@gmail.com', senha:'1234'},{nome:'Fernanda', email:'fernandamk@gmail.com', senha:'4321'}]};
+	}
+
+  	render() {
     return (
 		<div id="layout">
 			<a href="#menu" id="menuLink" className="menu-link">
@@ -11,11 +17,15 @@ class App extends Component {
 		
 			<div id="menu">
 				<div className="pure-menu">
+					{/* eslint-disable-next-line */}
 					<a className="pure-menu-heading" href="#">HASEARCH</a>
 			
 					<ul className="pure-menu-list">
+						{/* eslint-disable-next-line */}
 						<li className="pure-menu-item"><a href="#" className="pure-menu-link">Home</a></li>
+						{/* eslint-disable-next-line */}
 						<li className="pure-menu-item"><a href="#" className="pure-menu-link">Autor</a></li>
+						{/* eslint-disable-next-line */}
 						<li className="pure-menu-item"><a href="#" className="pure-menu-link">Livro</a></li>
 					</ul>
 				</div>
@@ -40,7 +50,7 @@ class App extends Component {
 							</div>
 							<div className='pure-control-group'>
 								<label htmlFor='senha'>Senha</label>
-								<input id='senha' type='password' name='senha' value=''></input>
+								<input id='senha' type='password' name='senha'></input>
 							</div>
 							<div className='pure-control-group'>
 								<label></label>
@@ -58,14 +68,16 @@ class App extends Component {
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>Felipe</td>
-									<td>felipe.hashi@gmail.com</td>
-								</tr>
-								<tr>
-									<td>Fernanda</td>
-									<td>fernandamk@gmail.com</td>
-								</tr>
+								{
+									this.state.lista.map( (autor)=>{
+										return(
+											<tr>
+												<td>{autor.nome}</td>
+												<td>{autor.email}</td>
+											</tr>
+										);
+									})
+								}
 							</tbody>
 						</table>
 					</div>
@@ -74,6 +86,6 @@ class App extends Component {
 		</div>
       );
     }
-  }
+}
   
-  export default App;
+export default App;
