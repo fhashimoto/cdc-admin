@@ -6,10 +6,7 @@ class App extends Component {
   render() {
     return (
 		<div id="layout">
-			{/*Menu toggle*/}
 			<a href="#menu" id="menuLink" className="menu-link">
-				{/*Hamburger icon*/}
-				<span></span>
 			</a>
 		
 			<div id="menu">
