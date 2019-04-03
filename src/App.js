@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import './css/pure-min.css';
 import './css/side-menu.css';
 
