@@ -34,6 +34,7 @@ class App extends Component {
 			data: JSON.stringify({nome:this.state.nome,email:this.state.email,senha:this.state.senha}),
 			success:function(resposta){
 				console.log('enviado com sucesso');
+				this.setState({lista:resposta});
 			}.bind(this),
 			error: function(resposta){
 				console.log('erro');
@@ -84,15 +85,15 @@ class App extends Component {
 						<form className='pure-form pure-form-aligned' onSubmit={this.enviaForm} method='post'>
 							<div className='pure-control-group'>
 								<label htmlFor='nome'>Nome</label>
-								<input id='nome' type='text' name='nome' value={this.state.nome} onChange={setNome}></input>
+								<input id='nome' type='text' name='nome' value={this.state.nome} onChange={this.setNome}></input>
 							</div>
 							<div className='pure-control-group'>
 								<label htmlFor='e-mail'>E-mail</label>
-								<input id='email' type='email' name='email' value={this.state.email} onChange={setEmail}></input>
+								<input id='email' type='email' name='email' value={this.state.email} onChange={this.setEmail}></input>
 							</div>
 							<div className='pure-control-group'>
 								<label htmlFor='senha'>Senha</label>
-								<input id='senha' type='password' name='senha' value={this.state.senha} onChange={setSenha}></input>
+								<input id='senha' type='password' name='senha' value={this.state.senha} onChange={this.setSenha}></input>
 							</div>
 							<div className='pure-control-group'>
 								<label></label>
