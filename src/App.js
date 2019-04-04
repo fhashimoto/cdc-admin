@@ -20,7 +20,12 @@ class App extends Component {
 		});
 	}
 
-  	render() {
+	enviaForm(e){
+		e.preventDefault();
+		console.log('dados sendo enviados');
+	}
+
+  render() {
     return (
 		<div id="layout">
 			<a href="#menu" id="menuLink" className="menu-link">
@@ -50,7 +55,7 @@ class App extends Component {
 				<div className='content' id='content'>
 					{/* Formulário para cadastro */}
 					<div className='pure-form pure-form-aligned'>
-						<form className='pure-form pure-form-aligned'>
+						<form className='pure-form pure-form-aligned' onSubmit={this.enviaForm} method='post'>
 							<div className='pure-control-group'>
 								<label htmlFor='nome'>Nome</label>
 								<input id='nome' type='text' name='nome'></input>
