@@ -22,7 +22,19 @@ class App extends Component {
 
 	enviaForm(e){
 		e.preventDefault();
-		console.log('dados sendo enviados');
+		$.ajax({
+			url:'https://cdc-react.herokuapp.com/api/autores',
+			contentType: 'application/json',
+			dataType: 'json',
+			type: 'post',
+			data: JSON.stringify({nome:this.state.nome,email:this.state.email,senha:this.state.senha}),
+			success:function(resposta){
+				console.log('enviado com sucesso');
+			}.bind(this),
+			error: function(resposta){
+				console.log('erro');
+			}
+		});
 	}
 
   render() {
