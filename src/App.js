@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import './css/pure-min.css';
 import './css/side-menu.css';
 import $ from'jquery';
+import InputCustomizado from './componentes/InputCustomizado.js';
+import SubmitCustomizado from './componentes/SubmitCustomizado.js';
 
 class App extends Component {
 
 	constructor(){
 		super();
-		this.state = {lista:[]};
+		this.state = {lista:[], nome:'',email:'',senha:''};
+		this.enviaForm = this.enviaForm.bind(this);
+		this.setNome = this.setNome.bind(this);
+		this.setEmail = this.setEmail.bind(this);
+		this.setSenha = this.setSenha.bind(this);
 	}
 
 	componentDidMount(){
@@ -20,7 +26,35 @@ class App extends Component {
 		});
 	}
 
-  	render() {
+	enviaForm(e){
+		e.preventDefault();
+		$.ajax({
+			url:'https://cdc-react.herokuapp.com/api/autores',
+			contentType: 'application/json',
+			dataType: 'json',
+			type: 'post',
+			data: JSON.stringify({nome:this.state.nome,email:this.state.email,senha:this.state.senha}),
+			success:function(resposta){
+				console.log('enviado com sucesso');
+				this.setState({lista:resposta});
+			}.bind(this),
+			error: function(resposta){
+				console.log('erro');
+			}
+		});
+	}
+
+	setNome(e){
+		this.setState({nome:e.target.value});
+	}
+	setEmail(e){
+		this.setState({email:e.target.value});
+	}
+	setSenha(e){
+		this.setState({senha:e.target.value});
+	}
+
+  render() {
     return (
 		<div id="layout">
 			<a href="#menu" id="menuLink" className="menu-link">
@@ -50,23 +84,11 @@ class App extends Component {
 				<div className='content' id='content'>
 					{/* Formulário para cadastro */}
 					<div className='pure-form pure-form-aligned'>
-						<form className='pure-form pure-form-aligned'>
-							<div className='pure-control-group'>
-								<label htmlFor='nome'>Nome</label>
-								<input id='nome' type='text' name='nome' value=''></input>
-							</div>
-							<div className='pure-control-group'>
-								<label htmlFor='e-mail'>E-mail</label>
-								<input id='email' type='email' name='email' value=''></input>
-							</div>
-							<div className='pure-control-group'>
-								<label htmlFor='senha'>Senha</label>
-								<input id='senha' type='password' name='senha'></input>
-							</div>
-							<div className='pure-control-group'>
-								<label></label>
-								<button type='submit' className='pure-button pure-button-primary'>Gravar</button>
-							</div>
+						<form className='pure-form pure-form-aligned' onSubmit={this.enviaForm} method='post'>
+							<InputCustomizado id="nome" type="text" name="nome" value={this.state.nome} onChange={this.setNome} label="Nome"/>
+							<InputCustomizado id="email" type="email" name="email" value={this.state.email} onChange={this.setEmail} label="Email"/>
+							<InputCustomizado id="senha" type="password" name="senha" value={this.state.senha} onChange={this.setSenha} label="Senha"/>
+							<SubmitCustomizado type='submit' className='pure-button pure-button-primary' label='Gravar'/>
 						</form>
 					</div>
 					{/* Tabela de cadastrados */}
@@ -82,7 +104,7 @@ class App extends Component {
 								{
 									this.state.lista.map( (autor)=>{
 										return(
-											<tr>
+											<tr key={autor.id}>
 												<td>{autor.nome}</td>
 												<td>{autor.email}</td>
 											</tr>
