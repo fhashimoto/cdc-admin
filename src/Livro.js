@@ -1,5 +1,6 @@
 import $ from "jquery";
-import InputCustomizado from "./componentes/InputCustomizado"
+import InputCustomizado from "./componentes/InputCustomizado";
+import SubmitCustomizado from "./componentes/SubmitCustomizado.js";
 import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 import TratadorErros from './TratadorErros'
@@ -71,10 +72,7 @@ class FormularioLivro extends Component {
               {autores}
             </select>
           </div>
-          <div className="pure-control-group">                                  
-            <label></label> 
-            <button type="submit" className="pure-button pure-button-primary">Gravar</button>                                    
-          </div>          
+          <SubmitCustomizado type='submit' className='pure-button pure-button-primary' label='Gravar'/>
         </form>             
       </div>
     );
