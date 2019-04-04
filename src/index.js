@@ -5,15 +5,16 @@ import AutorBox from './Autor';
 import Home from './Home';
 import Livro from './Livro';
 import './index.css';
-import {Router,Route,browserHistory,IndexRoute} from 'react-router';
+import {Router,Route,BrowserRouter} from 'react-router';
 
 ReactDOM.render(
-  (<Router history={browserHistory}>
-  	<Route path="/" component={App}>
-  		<IndexRoute component={Home}/>
-	  	<Route path="/autor" component={AutorBox}/>
-	  	<Route path="/livro" component={Livro}/>
-  	</Route>
-  </Router>),
+  (<BrowserRouter>
+		<div>
+			<Route path="/" component={Home}/>
+			<Route path="/autor" component={AutorBox}/>
+			<Route path="/livro" component={Livro}/>
+		</div>
+	</BrowserRouter>),
+
   document.getElementById('root')
 );
