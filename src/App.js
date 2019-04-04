@@ -11,12 +11,10 @@ class App extends Component {
 	}
 
 	componentDidMount(){
-		console.log('didMount');
 		$.ajax({
 			url:'https://cdc-react.herokuapp.com/api/autores',
 			dataType: 'json',
 			success:function(resposta){
-				console.log('chegou resposta');
 				this.setState({lista:resposta});
 			}.bind(this)
 		});
