@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-class InputCustomizado extends Component{
+export default class InputCustomizado extends Component{
     render(){
         return(  
         <div className='pure-control-group'>
-            <label htmlFor='nome'>Nome</label>
-            <input id='nome' type='text' name='nome' value={this.state.nome} onChange={this.setNome}></input>
+            <label htmlFor={this.props.id}>{this.props.label}</label>
+            <input id={this.props.id} type={this.props.type} name={this.props.nome} value={this.props.value} onChange={this.props.onChange}></input>
         </div>
         );
     }

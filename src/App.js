@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './css/pure-min.css';
 import './css/side-menu.css';
 import $ from'jquery';
+import InputCustomizado from './componentes/InputCustomizado.js';
 
 class App extends Component {
 
@@ -83,18 +84,9 @@ class App extends Component {
 					{/* Formulário para cadastro */}
 					<div className='pure-form pure-form-aligned'>
 						<form className='pure-form pure-form-aligned' onSubmit={this.enviaForm} method='post'>
-							<div className='pure-control-group'>
-								<label htmlFor='nome'>Nome</label>
-								<input id='nome' type='text' name='nome' value={this.state.nome} onChange={this.setNome}></input>
-							</div>
-							<div className='pure-control-group'>
-								<label htmlFor='e-mail'>E-mail</label>
-								<input id='email' type='email' name='email' value={this.state.email} onChange={this.setEmail}></input>
-							</div>
-							<div className='pure-control-group'>
-								<label htmlFor='senha'>Senha</label>
-								<input id='senha' type='password' name='senha' value={this.state.senha} onChange={this.setSenha}></input>
-							</div>
+							<InputCustomizado id="nome" type="text" name="nome" value={this.state.nome} onChange={this.setNome} label="Nome"/>
+							<InputCustomizado id="email" type="email" name="email" value={this.state.email} onChange={this.setEmail} label="Email"/>
+							<InputCustomizado id="senha" type="password" name="senha" value={this.state.senha} onChange={this.setSenha} label="Senha"/>
 							<div className='pure-control-group'>
 								<label></label>
 								<button type='submit' className='pure-button pure-button-primary'>Gravar</button>
