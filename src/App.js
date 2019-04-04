@@ -7,7 +7,11 @@ class App extends Component {
 
 	constructor(){
 		super();
-		this.state = {lista:[]};
+		this.state = {lista:[], nome:'',email:'',senha:''};
+		this.enviaForm = this.enviaForm.bind(this);
+		this.setNome = this.setNome.bind(this);
+		this.setEmail = this.setEmail.bind(this);
+		this.setSenha = this.setSenha.bind(this);
 	}
 
 	componentDidMount(){
@@ -35,6 +39,16 @@ class App extends Component {
 				console.log('erro');
 			}
 		});
+	}
+
+	setNome(e){
+		this.setState({nome:e.target.value});
+	}
+	setEmail(e){
+		this.setState({email:e.target.value});
+	}
+	setSenha(e){
+		this.setState({senha:e.target.value});
 	}
 
   render() {
@@ -70,15 +84,15 @@ class App extends Component {
 						<form className='pure-form pure-form-aligned' onSubmit={this.enviaForm} method='post'>
 							<div className='pure-control-group'>
 								<label htmlFor='nome'>Nome</label>
-								<input id='nome' type='text' name='nome'></input>
+								<input id='nome' type='text' name='nome' value={this.state.nome} onChange={setNome}></input>
 							</div>
 							<div className='pure-control-group'>
 								<label htmlFor='e-mail'>E-mail</label>
-								<input id='email' type='email' name='email'></input>
+								<input id='email' type='email' name='email' value={this.state.email} onChange={setEmail}></input>
 							</div>
 							<div className='pure-control-group'>
 								<label htmlFor='senha'>Senha</label>
-								<input id='senha' type='password' name='senha'></input>
+								<input id='senha' type='password' name='senha' value={this.state.senha} onChange={setSenha}></input>
 							</div>
 							<div className='pure-control-group'>
 								<label></label>
